@@ -18,7 +18,7 @@ if (!$mysqli -> query($proc->transformToXML($xmlDoc))) {
 
 echo $proc->transformToXML($xmlDoc);
 
-
+echo '<br /><br /><br />';
 /******* NOMBRES  *********/
 $xslNombres = new DOMDocument();
 $xslNombres->load("getNombres.xsl");

@@ -9,7 +9,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
         <xsl:text>(&#10;</xsl:text>
         <xsl:value-of select="title" />
             <xsl:text>'</xsl:text> <xsl:value-of select="Id" /> <xsl:text>'</xsl:text>,
-            <xsl:text>'</xsl:text> <xsl:value-of select="substring-before(Nombre,'.')" /> <xsl:text>'</xsl:text>
+            <xsl:choose>
+                <xsl:when test="contains(Nombre, '.')">
+                    <xsl:text>'</xsl:text> <xsl:value-of select="substring-before(Nombre,'.')" /> <xsl:text>'</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>'</xsl:text> <xsl:value-of select="Nombre" /> <xsl:text>'</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose> 
         <xsl:text>)</xsl:text>
         <xsl:if test="position() != last()">
                     <xsl:text>,</xsl:text>
